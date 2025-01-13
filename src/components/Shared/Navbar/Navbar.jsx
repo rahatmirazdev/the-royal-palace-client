@@ -23,7 +23,7 @@ const Navbar = () => {
           <div className="flex-grow flex justify-center">
             <div className="hidden md:flex items-baseline space-x-4">
               <Link to="/" className="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Home</Link>
-              <Link to="/apartments" className="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Apartment</Link>
+              <Link to="/apartments" className="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Apartments</Link>
             </div>
           </div>
           <div className="flex items-center">

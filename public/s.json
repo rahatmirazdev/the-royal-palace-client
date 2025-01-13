@@ -1,0 +1,72 @@
+[
+    {
+      "image": "https://i.ibb.co.com/5cMLdZx/apartment-2558277-1920.jpg",
+      "floorNo": 1,
+      "blockName": "A",
+      "apartmentNo": "101",
+      "rent": 1500
+    },
+    {
+      "image": "https://i.ibb.co.com/HqZqHSD/bed-1834327-1920.jpg",
+      "floorNo": 2,
+      "blockName": "A",
+      "apartmentNo": "201",
+      "rent": 1600
+    },
+    {
+      "image": "https://i.ibb.co.com/pbhd4vs/bed-1839183-1920.jpg",
+      "floorNo": 3,
+      "blockName": "B",
+      "apartmentNo": "301",
+      "rent": 1700
+    },
+    {
+      "image": "https://i.ibb.co.com/nCL7b8c/bed-1839184-1920.jpg",
+      "floorNo": 4,
+      "blockName": "B",
+      "apartmentNo": "401",
+      "rent": 1800
+    },
+    {
+      "image": "https://i.ibb.co.com/PZqtWYT/bedroom-389254-1920.jpg",
+      "floorNo": 5,
+      "blockName": "C",
+      "apartmentNo": "501",
+      "rent": 1900
+    },
+    {
+      "image": "https://i.ibb.co.com/xsmdxm4/bedroom-416062-1280.jpg",
+      "floorNo": 6,
+      "blockName": "C",
+      "apartmentNo": "601",
+      "rent": 2000
+    },
+    {
+      "image": "https://i.ibb.co.com/BfTPNmS/bedroom-5772286-1920.jpg",
+      "floorNo": 7,
+      "blockName": "D",
+      "apartmentNo": "701",
+      "rent": 2100
+    },
+    {
+      "image": "https://i.ibb.co.com/ggH4tRG/roomOne.jpg",
+      "floorNo": 8,
+      "blockName": "D",
+      "apartmentNo": "801",
+      "rent": 2200
+    },
+    {
+      "image": "https://i.ibb.co.com/x8gD43K/room-Three.jpg",
+      "floorNo": 9,
+      "blockName": "E",
+      "apartmentNo": "901",
+      "rent": 2300
+    },
+    {
+      "image": "https://i.ibb.co.com/LkDTFhj/roomTwo.jpg",
+      "floorNo": 10,
+      "blockName": "E",
+      "apartmentNo": "1001",
+      "rent": 2400
+    }
+  ]
