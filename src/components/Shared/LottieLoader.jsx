@@ -14,7 +14,7 @@ const LottieLoader = ({ smallHeight }) => {
 
   return (
     <div
-      className={` ${smallHeight ? 'h-[250px]' : 'h-[70vh]'}
+      className={` ${smallHeight ? 'h-[50px]' : 'h-[90vh]'}
       flex 
       flex-col 
       justify-center 

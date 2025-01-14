@@ -13,7 +13,6 @@ const useAxiosSecure = () => {
   const { logOut } = useAuth()
   useEffect(() => {
     axiosSecure.interceptors.request.use(request => {
-      console.log('Starting Request', request)
       return request
     })
     axiosSecure.interceptors.response.use(
@@ -21,7 +20,6 @@ const useAxiosSecure = () => {
         return res
       },
       async error => {
-        console.log('Error caught from axios interceptor ', error.response)
         if (error.response.status === 401 || error.response.status === 403) {
           logOut()
           navigate('/login')

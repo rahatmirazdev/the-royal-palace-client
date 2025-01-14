@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import useFetchData from '../../hooks/useFetchData';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import axios from 'axios';
+import axiosInstance from '../../hooks/axiosInstance';
+import LoadingSpinner from '../../components/Shared/LoadingSpinner';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Apartments = () => {
   const [page, setPage] = useState(1);
@@ -21,17 +23,18 @@ const Apartments = () => {
       return;
     }
     try {
-      await axios.post('/apartments/agreement', {
+      const response = await axiosInstance.post('/apartments/agreement', {
         userName: user.name,
         userEmail: user.email,
         floorNo: apartment.floorNo,
         blockName: apartment.blockName,
         apartmentNo: apartment.apartmentNo,
         rent: apartment.rent,
+        status: 'pending',
       });
-      alert('Agreement created successfully.');
+      toast.success('Agreement created successfully.');
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response?.data?.message);
     }
   };
 
@@ -43,26 +46,27 @@ const Apartments = () => {
     refetch();
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-8">Available Apartments</h1>
+      <ToastContainer />
+      <h1 className="text-4xl font-bold text-center mb-8 text-black">Available Apartments</h1>
       <form onSubmit={handleSearch} className="flex justify-center mb-8">
         <input
           type="number"
           placeholder="Min Rent"
           value={minRentInput}
           onChange={(e) => setMinRentInput(e.target.value)}
-          className="border px-4 py-2 mr-2"
+          className="border px-4 py-2 mr-2 bg-transparent text-black"
         />
         <input
           type="number"
           placeholder="Max Rent"
           value={maxRentInput}
           onChange={(e) => setMaxRentInput(e.target.value)}
-          className="border px-4 py-2"
+          className="border px-4 py-2 bg-transparent text-black"
         />
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 ml-2">
           Search
@@ -72,13 +76,13 @@ const Apartments = () => {
         {data.apartments.map((apartment) => (
           <div key={apartment._id} className="bg-white p-6 rounded-lg shadow-lg">
             <img src={apartment.image} alt="Apartment" className="w-full h-48 object-cover mb-4 rounded-lg" />
-            <h3 className="text-xl font-bold mb-2">Apartment No: {apartment.apartmentNo}</h3>
+            <h3 className="text-xl font-bold mb-2 text-black">Apartment No: {apartment.apartmentNo}</h3>
             <p className="text-gray-700 mb-2">Floor No: {apartment.floorNo}</p>
             <p className="text-gray-700 mb-2">Block Name: {apartment.blockName}</p>
             <p className="text-gray-700 mb-2">Rent: {apartment.rent} TK</p>
             <button
               onClick={() => handleAgreement(apartment)}
-              className="bg-lime-500 text-white px-4 py-2 rounded-md hover:bg-lime-600 transition duration-200"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200"
             >
               Make Agreement
             </button>
