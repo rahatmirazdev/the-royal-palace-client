@@ -111,46 +111,8 @@ Simplify building management and enhance user experience with Building Managemen
 
 ## Admin Credentials
 
-- **Username**: admin@example.com
-- **Password**: adminpassword
-
-## Commit Guidelines
-
-- Include at least 20 meaningful commits on the client side with descriptive messages.
-- Include at least 12 meaningful commits on the server side with descriptive messages.
-
-## Deployment Guidelines
-
-- Ensure the server is working perfectly on production without any CORS/404/504 errors.
-- Ensure the live link is working perfectly without errors on landing.
-- Ensure the page doesn't throw any error on reloading from any routes.
-- Add your domain for authorization to Firebase if you use Netlify/Surge/Vercel.
-- Ensure logged-in users are not redirected to the login page on reloading any private route.
-
-## Environment Variables
-
-- Secure Firebase configuration keys using environment variables.
-- Secure MongoDB credentials using environment variables.
-
-## Data Fetching
-
-- Implement TanStack Query in all the data fetching functionality (For GET method only).
-
-## Design Guidelines
-
-- Create a design that encourages recruiters with pleasing color contrast and proper alignment and spacing.
-- Ensure the website is fully responsive on mobile, tablet, and desktop.
-- Avoid using any Lorem ipsum text on the website.
-- Show sweet alert/toast notifications for all CRUD operations, successful authentication login, and sign-up.
-
-## Home Page
-
-- Navbar with logo, website name, Home, Apartment, and Login icon (conditional).
-- Fancy banner with automatic slides.
-- About the building section with good typography.
-- Coupons section displayed in a fancy way.
-- Location details section with map or image.
-- Footer with social links and relevant information.
+- **Username**: royal@palace.com
+- **Password**: 123456.Rr
 
 ## Authentication System
 
@@ -158,12 +120,6 @@ Simplify building management and enhance user experience with Building Managemen
 - Google login option.
 - Password verification with specific criteria.
 - Toast notifications for successful login or registration.
-
-## Apartment Page
-
-- Display all apartments with image, floor number, block name, apartment number, rent, and agreement button.
-- Store apartment information in the database manually.
-- Apply pagination and search functionality based on rent range.
 
 ## User Dashboard
 
