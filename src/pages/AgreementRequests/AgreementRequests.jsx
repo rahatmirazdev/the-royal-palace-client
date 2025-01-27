@@ -5,9 +5,6 @@ import { toast } from 'react-hot-toast';
 const AgreementRequests = () => {
   const [agreementRequests, setAgreementRequests] = useState([]);
 
-  console.log(agreementRequests);
-
-
   const getAgreementRequests = async () => {
     try {
       const response = await axiosInstance.get('/agreements', { withCredentials: true });

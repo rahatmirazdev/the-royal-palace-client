@@ -71,7 +71,7 @@ const DashboardLayout = () => {
               <>
                 <li><Link to="/dashboard/my-profile" className='py-2 px-8'><FaRegUserCircle /> My Profile</Link></li>
                 <li><Link to="/dashboard/make-payment" className='py-2 px-8'><CiMoneyCheck1 /> Make Payment</Link></li>
-                <li><Link className='py-2 px-8'><FaHistory /> PaymentHistory</Link></li>
+                <li><Link to="/dashboard/payment-history" className='py-2 px-8'><FaHistory /> Payment History</Link></li>
                 <li><Link to="/dashboard/announcements" className='py-2 px-8'><SlEnvolopeLetter /> Announcements</Link></li>
               </>
             )

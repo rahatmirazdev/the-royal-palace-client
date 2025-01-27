@@ -14,7 +14,7 @@ The Building Management System enables users to:
 
 ## 🚀 Live Link
 
-[Visit The Royal Palace Live](https://your-live-site-url.com)
+[Visit The Royal Palace Live](https://theroyal-palace.web.app)
 
 ## 🔧 Main Technologies Used
 

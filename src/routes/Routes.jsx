@@ -17,6 +17,7 @@ import PrivateRoute from './PrivateRoute';
 import UserRoute from './UserRoute';
 import MemberRoute from './MemberRoute';
 import AdminRoute from './AdminRoute';
+import PaymentHistory from './../pages/PaymentHistory/PaymentHistory';
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/make-payment',
         element: <MemberRoute><MakePayment /></MemberRoute>,
+      },
+      {
+        path: '/dashboard/payment-history',
+        element: <MemberRoute><PaymentHistory /></MemberRoute>,
       },
     ],
   },

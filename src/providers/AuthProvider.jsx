@@ -1,4 +1,3 @@
-// filepath: /c:/Users/Rahat/Desktop/The Royal Palace/client/src/providers/AuthProvider.jsx
 import React, { createContext, useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GoogleAuthProvider } from 'firebase/auth';
 import axios from 'axios';

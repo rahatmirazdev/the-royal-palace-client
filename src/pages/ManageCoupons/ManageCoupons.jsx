@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import axiosInstance from './../../hooks/axiosInstance';
 
@@ -34,7 +33,6 @@ const ManageCoupons = () => {
       setCode('');
       setDiscountPercentage('');
       setIsModalOpen(false);
-      // Refresh the coupons list
       const response = await axiosInstance.get('/coupons');
       setCoupons(response.data);
     } catch (error) {
@@ -44,7 +42,7 @@ const ManageCoupons = () => {
 
   const handleDeleteCoupon = async (couponId) => {
     try {
-      await axios.delete(`/coupons/${couponId}`);
+      await axiosInstance.delete(`/coupons/${couponId}`);
       setCoupons(coupons.filter((coupon) => coupon._id !== couponId));
     } catch (error) {
       console.error('Failed to delete coupon', error);
@@ -91,7 +89,7 @@ const ManageCoupons = () => {
           ))}
         </tbody>
       </table>
-        <button onClick={handleOpenModal} className="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4">Add Coupon</button>
+      <button onClick={handleOpenModal} className="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4">Add Coupon</button>
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
