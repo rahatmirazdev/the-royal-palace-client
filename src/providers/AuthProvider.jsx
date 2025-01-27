@@ -1,3 +1,4 @@
+// filepath: /c:/Users/Rahat/Desktop/The Royal Palace/client/src/providers/AuthProvider.jsx
 import React, { createContext, useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GoogleAuthProvider } from 'firebase/auth';
 import axios from 'axios';
@@ -45,7 +46,6 @@ const AuthProvider = ({ children }) => {
       console.log('CurrentUser-->', currentUser?.email);
       if (currentUser?.email) {
         setUser(currentUser);
-        // save user to the database
         try {
           await axios.post(
             `${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`,
@@ -54,31 +54,14 @@ const AuthProvider = ({ children }) => {
               name: currentUser?.displayName,
               photoURL: currentUser?.photoURL,
             }
+            
           );
-          // Get JWT token
-          console.log('Getting JWT token...');
-          const response = await axios.post(
-            `${import.meta.env.VITE_API_URL}/jwt`,
-            {
-              email: currentUser?.email,
-            },
-            { withCredentials: true }
-          );
-          console.log('JWT token received:', response.data.token);
+          console.log('User created successfully');
         } catch (error) {
-          console.error('Error during JWT token generation or user saving:', error);
+          console.log('Error creating user', error);
         }
       } else {
-        setUser(null); // Ensure user is set to null if not authenticated
-        try {
-
-          await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-            withCredentials: true,
-          });
-
-        } catch (error) {
-          console.error('Error during logout:', error);
-        }
+        setUser(null);
       }
       setLoading(false);
     });

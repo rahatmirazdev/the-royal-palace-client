@@ -31,6 +31,7 @@ const Apartments = () => {
         apartmentNo: apartment.apartmentNo,
         rent: apartment.rent,
         status: 'pending',
+        requestDate: new Date().toISOString(),
       });
       toast.success('Agreement created successfully.');
     } catch (error) {
@@ -68,7 +69,7 @@ const Apartments = () => {
           onChange={(e) => setMaxRentInput(e.target.value)}
           className="border px-4 py-2 bg-transparent text-black"
         />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 ml-2">
+        <button type="submit" className="bg-blue-500 text-white rounded-md px-4 py-2 ml-2">
           Search
         </button>
       </form>

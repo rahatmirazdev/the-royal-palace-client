@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import one from '../../assets/images/banner/one.jpg';
 import two from '../../assets/images/banner/two.jpg';
 import three from '../../assets/images/banner/three.jpg';
+import { Link } from 'react-router-dom';
 
 const images = [one, two, three];
 
@@ -11,7 +12,7 @@ const Banner = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); 
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -29,12 +30,9 @@ const Banner = () => {
           and services tailored to meet your needs.
         </p>
         <div className="flex space-x-4">
-          <button className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
-            Learn More
-          </button>
-          <button className="bg-gray-200 text-blue-500 px-6 py-2 rounded-md border border-blue-500 hover:bg-gray-300">
-            Contact Us
-          </button>
+          <Link to="/apartments" className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
+            Get the deal now
+          </Link>
         </div>
       </div>
     </div>
