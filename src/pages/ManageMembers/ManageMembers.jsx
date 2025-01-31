@@ -31,22 +31,27 @@ const ManageMembers = () => {
     }
   };
 
+  const memberCount = members.length;
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4 text-center mt-7">Manage Members</h1>
+      <p className="text-center mb-4">Total Members: {memberCount}</p>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="py-2 px-4 border-b">Name</th>
+              <th className="py-2 px-4 border-b">Status</th>
               <th className="py-2 px-4 border-b">Email</th>
               <th className="py-2 px-4 border-b">Actions</th>
             </tr>
           </thead>
           <tbody>
             {members.map(member => (
-              <tr key={member.email} className="hover:bg-gray-50">
-                <td className="py-2 px-4 border-b">{member.name}</td>
+              <tr key={member._id} className="hover:bg-gray-50">
+                <td className="py-2 px-4 border-b">{
+                  member.role === 'member' ? 'Accepted' : 'Pending'
+                }</td>
                 <td className="py-2 px-4 border-b">{member.email}</td>
                 <td className="py-2 px-4 border-b">
                   <button

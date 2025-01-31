@@ -11,6 +11,9 @@ const Navbar = () => {
     await logOut();
   };
 
+  console.log( user );
+  
+
   return (
     <nav className="bg-white fixed w-full z-50 top-0 left-0">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -39,35 +39,61 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  // onAuthStateChange
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      console.log('CurrentUser-->', currentUser?.email);
+    const unsubscribe = onAuthStateChanged(auth, async currentUser => {
+      // console.log('CurrentUser', currentUser)
       if (currentUser?.email) {
-        setUser(currentUser);
+        setUser(currentUser)
+
+        // Get JWT token
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/jwt`,
+          {
+            email: currentUser?.email,
+          },
+          { withCredentials: true }
+        )
+        // console.log('JWT Token-->', response.data.token)
+
+        // Check if user exists in the database
         try {
-          await axios.post(
-            `${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`,
-            {
-              email: currentUser?.email,
-              name: currentUser?.displayName,
-              photoURL: currentUser?.photoURL,
-            }
-            
-          );
-          console.log('User created successfully');
+          const userResponse = await axios.get(
+            `${import.meta.env.VITE_API_URL}/users/${currentUser.email}`,
+            { withCredentials: true }
+          )
+          if (!userResponse.data) {
+            // Add user to the database
+            await axios.post(
+              `${import.meta.env.VITE_API_URL}/users/${currentUser.email}`,
+              {
+                email: currentUser.email,
+                name: currentUser.displayName,
+                photoURL: currentUser.photoURL,
+                timestamp: Date.now(),
+                role: 'user'
+              },
+              { withCredentials: true }
+            )
+            setUser({ ...currentUser, role: 'user' })
+          } else {
+            setUser({ ...currentUser, role: userResponse.data.role })
+          }
         } catch (error) {
-          console.log('Error creating user', error);
+          console.error('Error checking or adding user:', error)
         }
       } else {
-        setUser(null);
+        setUser(currentUser)
+        await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
+          withCredentials: true,
+        })
       }
-      setLoading(false);
-    });
+      setLoading(false)
+    })
     return () => {
-      return unsubscribe();
-    };
-  }, [auth]);
+      return unsubscribe()
+    }
+  }, [])
+
 
   const authInfo = {
     user,

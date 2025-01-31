@@ -24,7 +24,7 @@ const Apartments = () => {
     }
     try {
       const response = await axiosInstance.post('/apartments/agreement', {
-        userName: user.name,
+        userName: user.displayName,
         userEmail: user.email,
         floorNo: apartment.floorNo,
         blockName: apartment.blockName,
@@ -54,7 +54,7 @@ const Apartments = () => {
     <div className="container mx-auto px-4 py-8">
       <ToastContainer />
       <h1 className="text-4xl font-bold text-center mb-8 text-black">Available Apartments</h1>
-      <form onSubmit={handleSearch} className="flex justify-center mb-8">
+      <form onSubmit={handleSearch} className="flex justify-start gap-3 md:gap-0 md:justify-center mb-8 flex-wrap md:flex-nowrap">
         <input
           type="number"
           placeholder="Min Rent"

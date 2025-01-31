@@ -4,10 +4,9 @@ import { CiMoneyCheck1 } from "react-icons/ci";
 import { HiOutlineUsers } from "react-icons/hi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { RiCoupon2Line } from "react-icons/ri";
-import { Link, Navigate, Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import useAuth from '../hooks/useAuth';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import LoadingSpinner from '../components/Shared/LoadingSpinner';
 import axiosInstance from './../hooks/axiosInstance';

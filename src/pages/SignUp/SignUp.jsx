@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import useAuth from '../../hooks/useAuth'
 import { toast } from 'react-hot-toast'
-import { TbFidgetSpinner } from 'react-icons/tb'
 import axios from 'axios'
 
 const SignUp = () => {
@@ -23,17 +22,13 @@ const SignUp = () => {
 
     try {
       const result = await createUser(email, password)
-
       await updateUserProfile(
         name,
         imageUrl
       )
-
-
       navigate('/')
       toast.success('Signup Successful')
     } catch (err) {
-
       toast.error(err?.message)
     }
   }
@@ -41,7 +36,6 @@ const SignUp = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle()
-
       navigate('/')
       toast.success('Signup Successful')
     } catch (err) {
@@ -53,7 +47,6 @@ const SignUp = () => {
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10  bg-white text-gray-900 border border-blue-500'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-          <p className='text-sm text-gray-400'>Welcome to PlantNet</p>
         </div>
         <form
           onSubmit={handleSubmit}

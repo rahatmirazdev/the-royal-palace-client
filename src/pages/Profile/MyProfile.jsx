@@ -58,7 +58,7 @@ const MyProfile = () => {
   if (loading) return <LoadingSpinner />;
   const memberCount = members.filter(member => member.role === 'member').length;
 
-
+  
   return (
     userData.role === 'admin' ? (
       <div className="md:w-[500px] mx-auto p-6 bg-white rounded-lg mt-5 border border-blue-300">
