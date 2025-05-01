@@ -1,19 +1,23 @@
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth.js';
 import { useState, useEffect } from 'react';
-import { FaBuilding, FaUserCircle, FaSignOutAlt, FaTachometerAlt } from 'react-icons/fa';
+import { FaBuilding, FaUserCircle, FaSignOutAlt, FaTachometerAlt, FaQuestionCircle } from 'react-icons/fa';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownOpen && !event.target.closest('.profile-dropdown')) {
         setDropdownOpen(false);
+      }
+      if (resourcesDropdownOpen && !event.target.closest('.resources-dropdown')) {
+        setResourcesDropdownOpen(false);
       }
     };
 
@@ -33,7 +37,7 @@ const Navbar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [dropdownOpen]);
+  }, [dropdownOpen, resourcesDropdownOpen]);
 
   const handleLogout = async () => {
     await logOut();
@@ -68,6 +72,45 @@ const Navbar = () => {
             >
               Apartments
             </Link>
+            <div className="relative resources-dropdown">
+              <button
+                onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
+                className="px-4 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200 font-medium flex items-center gap-1"
+              >
+                Resources
+                <svg className={`w-4 h-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : 'rotate-0'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {resourcesDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 z-50 transform opacity-100 scale-100 transition-all duration-200 ease-out origin-top-right">
+                  <Link
+                    to="/faqs"
+                    className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    onClick={() => setResourcesDropdownOpen(false)}
+                  >
+                    <FaQuestionCircle className="mr-3 h-4 w-4" />
+                    <span>FAQs</span>
+                  </Link>
+                  <div className="border-t border-gray-100 my-1"></div>
+                  <Link
+                    to="/privacy-policy"
+                    className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    onClick={() => setResourcesDropdownOpen(false)}
+                  >
+                    <span className="ml-7">Privacy Policy</span>
+                  </Link>
+                  <Link
+                    to="/terms-of-service"
+                    className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    onClick={() => setResourcesDropdownOpen(false)}
+                  >
+                    <span className="ml-7">Terms of Service</span>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="flex items-center space-x-3">
@@ -164,6 +207,32 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
             >
               Apartments
+            </Link>
+
+            <div className="border-t border-gray-100 my-1 pt-1">
+              <p className="px-3 text-xs font-medium text-gray-500 uppercase">Resources</p>
+            </div>
+
+            <Link
+              to="/faqs"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+              onClick={() => setMenuOpen(false)}
+            >
+              FAQs
+            </Link>
+            <Link
+              to="/privacy-policy"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+              onClick={() => setMenuOpen(false)}
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms-of-service"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+              onClick={() => setMenuOpen(false)}
+            >
+              Terms of Service
             </Link>
 
             {user ? (

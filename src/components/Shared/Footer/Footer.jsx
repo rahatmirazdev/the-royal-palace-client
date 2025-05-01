@@ -1,26 +1,127 @@
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaBuilding, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-white px-4 divide-y relative bottom-0 left-0 text-black">
-      <div className="container mx-auto py-6 flex flex-col md:flex-row items-center justify-between">
-        <p className="text-sm text-center">
-          © 2024-2025 The Royal Palace Inc. All rights reserved.
-        </p>
-        <div className="flex space-x-4 mt-4 md:mt-0">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22.675 0h-21.35C.595 0 0 .595 0 1.325v21.351C0 23.405.595 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.311h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.325-.595 1.325-1.324V1.325C24 .595 23.405 0 22.675 0z" />
-            </svg>
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.58c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zm15.11 12.87h-3.56v-5.6c0-1.34-.03-3.06-1.86-3.06-1.86 0-2.15 1.45-2.15 2.95v5.71H9.32V9h3.42v1.56h.05c.48-.91 1.66-1.86 3.42-1.86 3.66 0 4.34 2.41 4.34 5.54v6.21z" />
-            </svg>
-          </a>
+    <footer className="bg-gray-900 text-white pt-16 pb-8">
+      {/* Top Section with Logo and Links */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* About Column */}
+          <div>
+            <div className="flex items-center mb-6">
+              <FaBuilding className="text-blue-500 h-8 w-8 mr-3" />
+              <div className="font-bold text-xl">
+                <span className="block leading-tight">The Royal</span>
+                <span className="block leading-tight text-blue-500">Palace</span>
+              </div>
+            </div>
+            <p className="text-gray-400 mb-4">
+              Experience luxury living at its finest in our premium building with state-of-the-art amenities and services tailored to meet your needs.
+            </p>
+            <div className="flex space-x-4 mt-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <FaFacebook className="w-6 h-6" />
+                <span className="sr-only">Facebook</span>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <FaTwitter className="w-6 h-6" />
+                <span className="sr-only">Twitter</span>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <FaInstagram className="w-6 h-6" />
+                <span className="sr-only">Instagram</span>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <FaLinkedin className="w-6 h-6" />
+                <span className="sr-only">LinkedIn</span>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <FaYoutube className="w-6 h-6" />
+                <span className="sr-only">YouTube</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 border-b border-gray-700 pb-2">Quick Links</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/" className="text-gray-400 hover:text-blue-500 transition-colors">Home</Link>
+              </li>
+              <li>
+                <Link to="/apartments" className="text-gray-400 hover:text-blue-500 transition-colors">Apartments</Link>
+              </li>
+              <li>
+                <Link to="/faqs" className="text-gray-400 hover:text-blue-500 transition-colors">FAQs</Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="text-gray-400 hover:text-blue-500 transition-colors">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link to="/terms-of-service" className="text-gray-400 hover:text-blue-500 transition-colors">Terms of Service</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Information */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 border-b border-gray-700 pb-2">Contact Us</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <FaMapMarkerAlt className="text-blue-500 mt-1 mr-3 flex-shrink-0" />
+                <span className="text-gray-400">Building 12, Road 5, Block A, Banani<br />Dhaka 1213, Bangladesh</span>
+              </li>
+              <li className="flex items-center">
+                <FaPhone className="text-blue-500 mr-3 flex-shrink-0" />
+                <span className="text-gray-400">+880 1711-123456</span>
+              </li>
+              <li className="flex items-center">
+                <FaEnvelope className="text-blue-500 mr-3 flex-shrink-0" />
+                <a href="mailto:info@royalpalace.com" className="text-gray-400 hover:text-blue-500 transition-colors">info@royalpalace.com</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter Signup */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 border-b border-gray-700 pb-2">Stay Updated</h3>
+            <p className="text-gray-400 mb-4">Subscribe to our newsletter for updates on new apartments, promotions, and community events.</p>
+            <form className="flex flex-col space-y-2">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="bg-gray-800 border border-gray-700 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-300"
+              />
+              <button type="submit" className="bg-blue-600 hover:bg-blue-700 transition-colors px-4 py-2 rounded-md font-medium">
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-      <div className="container mx-auto py-6 text-center text-sm ">
-        <p>Contact us: rahatmiraz.dev@gmail.com</p>
-        <p>Address: Sylhet, Bangladesh</p>
+
+      {/* Middle Section with Additional Links */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-800 pt-8 pb-8">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-sm">
+          <Link to="/privacy-policy" className="text-gray-400 hover:text-blue-500 transition-colors">Privacy Policy</Link>
+          <Link to="/terms-of-service" className="text-gray-400 hover:text-blue-500 transition-colors">Terms of Service</Link>
+          <Link to="/faqs" className="text-gray-400 hover:text-blue-500 transition-colors">FAQs</Link>
+        </div>
+      </div>
+
+      {/* Copyright Section */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-800 pt-8"></div>
+      <div className="flex flex-col md:flex-row items-center justify-between">
+        <p className="text-sm text-gray-500 mb-4 md:mb-0">
+          © {currentYear} The Royal Palace Inc. All rights reserved.
+        </p>
+        <p className="text-sm text-gray-500">
+          Designed with ❤️ by Royal Palace Development Team
+        </p>
       </div>
     </footer>
   );

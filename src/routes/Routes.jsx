@@ -18,6 +18,9 @@ import UserRoute from './UserRoute';
 import MemberRoute from './MemberRoute';
 import AdminRoute from './AdminRoute';
 import PaymentHistory from './../pages/PaymentHistory/PaymentHistory';
+import FAQs from '../pages/FAQs/FAQs';
+import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
+import TermsOfService from '../pages/TermsOfService/TermsOfService';
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +35,18 @@ export const router = createBrowserRouter([
       {
         path: '/apartments',
         element: <Apartments />,
+      },
+      {
+        path: '/faqs',
+        element: <FAQs />,
+      },
+      {
+        path: '/privacy-policy',
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: '/terms-of-service',
+        element: <TermsOfService />,
       },
     ],
   },
