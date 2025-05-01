@@ -3,24 +3,58 @@ import { FcGoogle } from 'react-icons/fc'
 import useAuth from '../../hooks/useAuth'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
+import { useState } from 'react'
 
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle, loading } = useAuth()
   const navigate = useNavigate()
+  const [passwordError, setPasswordError] = useState('')
+
+  const validatePassword = (password) => {
+    // Check if password contains at least one uppercase letter
+    const hasUppercase = /[A-Z]/.test(password)
+    // Check if password contains at least one lowercase letter
+    const hasLowercase = /[a-z]/.test(password)
+    // Check if password is at least 6 characters long
+    const isLongEnough = password.length >= 6
+
+    if (!hasUppercase) {
+      return 'Password must contain at least one uppercase letter'
+    }
+    if (!hasLowercase) {
+      return 'Password must contain at least one lowercase letter'
+    }
+    if (!isLongEnough) {
+      return 'Password must be at least 6 characters long'
+    }
+    return ''
+  }
+
   const handleSubmit = async event => {
     event.preventDefault()
     const form = event.target
     const name = form.name.value
     const email = form.email.value
     const password = form.password.value
+
+    // Validate password
+    const passwordValidationError = validatePassword(password)
+    if (passwordValidationError) {
+      setPasswordError(passwordValidationError)
+      toast.error(passwordValidationError)
+      return
+    }
+
+    setPasswordError('')
+
     const image = form.image.files[0]
     const formData = new FormData()
     formData.append('image', image)
 
-    const { data } = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`, formData)
-    const imageUrl = data.data.display_url
-
     try {
+      const { data } = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`, formData)
+      const imageUrl = data.data.display_url
+
       const result = await createUser(email, password)
       await updateUserProfile(
         name,
@@ -60,6 +94,7 @@ const SignUp = () => {
                 Name
               </label>
               <input
+                required
                 type='text'
                 name='name'
                 id='name'
@@ -107,8 +142,14 @@ const SignUp = () => {
                 id='password'
                 required
                 placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900'
+                className={`w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900 ${passwordError ? 'border-red-500' : ''}`}
               />
+              {passwordError && (
+                <p className="text-red-500 text-xs mt-1">{passwordError}</p>
+              )}
+              <p className="text-xs text-gray-500 mt-1">
+                Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.
+              </p>
             </div>
           </div>
 
