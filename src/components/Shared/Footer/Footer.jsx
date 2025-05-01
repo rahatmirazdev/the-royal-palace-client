@@ -115,7 +115,7 @@ const Footer = () => {
 
       {/* Copyright Section */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-800 pt-8"></div>
-      <div className="flex flex-col md:flex-row items-center justify-between">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <p className="text-sm text-gray-500 mb-4 md:mb-0">
           © {currentYear} The Royal Palace Inc. All rights reserved.
         </p>
