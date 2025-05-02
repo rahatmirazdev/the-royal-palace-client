@@ -127,15 +127,9 @@ const MyProfile = () => {
                       <LuUsers />
                     </div>
                     <p className="text-sm text-gray-600">Total Members</p>
-                    <p className="text-2xl font-bold text-gray-800">{memberCount}</p>
+                    <p className="text-2xl font-bold text-gray-800">{memberCount - 1}</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex justify-center">
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200 flex items-center">
-                  <BsGraphUp className="mr-2" /> View Detailed Reports
-                </button>
               </div>
             </div>
           </>
